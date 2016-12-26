@@ -1,8 +1,13 @@
 # Feint
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/feint`. To experiment with that code, run `bin/console` for an interactive prompt.
+Feint is a Presenter Layer for models. When developing APIs, attributes change from version to version.
+Controllers contain lots of code to transform attribute names of models and parameter content to fit clients.
+Feint is aiming at wrapping your models for serialization in different situations. Major features of Feint
+is to
 
-TODO: Delete this and the text above, and describe your gem
+- Transform attributes of models from one name to another name for serialization.
+- Convert keys of parameters from one name to another name for model initialization.
+- Lock mandatory and optional columns used in a presenter.
 
 ## Installation
 
