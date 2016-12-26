@@ -9,6 +9,9 @@ is to
 - Convert keys of parameters from one name to another name for model initialization.
 - Lock mandatory and optional columns used in a presenter.
 
+From perspective of a serializer, a Feint preseter acts as the model it presents except for different
+attribute names. You can replace a model instance with its Feint presenter and it will work seamelessly.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -27,7 +30,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+class UserPresenter < Feint::Presenter
+end
+```
+
+```ruby
+class UsersController < ApplicationController
+  def show
+    @user = User.find_by(id: params[:id])
+    render json: UserPresenter.new(@user)
+  end
+end
+```
 
 ## Development
 
