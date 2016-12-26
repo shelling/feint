@@ -1,5 +1,5 @@
 require "feint/version"
 
 module Feint
-  # Your code goes here...
+  autoload :Presenter, "feint/presenter"
 end
