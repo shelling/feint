@@ -22,6 +22,25 @@ module Feint
           end
         end
       end
+
+      # @param name [Symbol]
+      # @param options [Hash]
+      # options[:key] is used as field name
+      # options[:type] is used to check type
+      def attribute(name, options = {})
+        type = options[:type] || Object
+        key  = options[:key] || name
+
+        define_method key do
+          value = @model.send(name)
+
+          if value.is_a?(type)
+            return value
+          else
+            raise TypeError, "#{name} should be #{type} and is #{value.class}"
+          end
+        end
+      end
     end
   end
 end
