@@ -11,6 +11,8 @@ is to
 
 Advanced features will include
 
+- Data Conversion. Pass a callback to convert data to a certain format
+- Type Coercion. Ensure the result is a certain type. Implicit data conversion.
 - Nested Presentation. If some attributes are from associations, delegate them to presenters of associations.
 - GraphQL Support. Being the glue of GraphQL type definitions and legacy models
 
