@@ -5,7 +5,7 @@ module Feint
     end
 
     class << self
-      # Takes a list of columns
+      # @param columns [Symbol] list
       def attributes(*columns)
         columns.each do |column|
           define_method column do
@@ -14,8 +14,7 @@ module Feint
         end
       end
 
-      # Take a list of mappiings
-      # { old_column_name => new_column_name }
+      # @param mappings [Hash] keys for old names and values for new names
       def transform(mappings)
         mappings.each do |old, new|
           define_method new do
