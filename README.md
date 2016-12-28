@@ -35,10 +35,26 @@ Or install it yourself as:
 
 ## Usage
 
+Consider we have a model `User`.
+
 ```ruby
-class UserPresenter < Feint::Presenter
+class User < ActiveRecord::Base
+  connection.create_table table_name do |f|
+    f.string  :name
+    f.integer :age
+  end
 end
 ```
+
+This presenter will take its attributes `name` and `age`
+
+```ruby
+class UserPresenter < Feint::Presenter
+  attributes :name, :age
+end
+```
+
+This presenter could be passed to the serializer
 
 ```ruby
 class UsersController < ApplicationController
@@ -47,6 +63,15 @@ class UsersController < ApplicationController
     render json: UserPresenter.new(@user)
   end
 end
+```
+
+And render expected result
+
+```json
+{
+  "name": "USER NAME",
+  "age":  "USER AGE",
+}
 ```
 
 ## Development
