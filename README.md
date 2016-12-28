@@ -9,6 +9,11 @@ is to
 - Convert keys of parameters from one name to another name for model initialization.
 - Lock mandatory and optional columns used in a presenter.
 
+Advanced features will include
+
+- Nested Presentation. If some attributes are from associations, delegate them to presenters of associations.
+- GraphQL Support. Being the glue of GraphQL type definitions and legacy models
+
 From perspective of a serializer, a Feint preseter acts as the model it presents except for different
 attribute names. You can replace a model instance with its Feint presenter and it will work seamelessly.
 
