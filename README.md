@@ -43,7 +43,10 @@ Consider we have a model `User`.
 class User < ActiveRecord::Base
   connection.create_table table_name do |f|
     f.string  :name
+    f.string  :email
+    f.string  :country
     f.integer :age
+    f.integer :level
   end
 end
 ```
@@ -53,6 +56,8 @@ This presenter will take its attributes `name` and `age`
 ```ruby
 class UserPresenter < Feint::Presenter
   attributes :name, :age
+  attribute :email, type: String
+  transform country: :nation, level: :rank
 end
 ```
 
@@ -71,8 +76,11 @@ And render expected result
 
 ```json
 {
-  "name": "USER NAME",
-  "age":  "USER AGE",
+  "name":   "NAME",
+  "age":    "AGE",
+  "email":  "EMAIL",
+  "nation": "COUNTRY",
+  "rank":   "LEVEL",
 }
 ```
 
@@ -90,4 +98,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/shelli
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
